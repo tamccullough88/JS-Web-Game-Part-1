@@ -26,7 +26,7 @@ function newImage(url, left, bottom){
 
 function newItem(url, left, bottom){
     let item = newImage(url, left, bottom)
-    item.addEventListener('click', function(){
+    item.addEventListener('dblclick', function(){
         item.remove()
         let inventoryItem = document.createElement('img')
         inventoryItem.src = url
@@ -34,13 +34,10 @@ function newItem(url, left, bottom){
     })
 }
 
-
-
-
 // inventory bar
-    let inventory = document.createElement('div')
+let inventory 
 function newInventory(){
-
+    inventory = document.createElement('div')
     inventory.style.position = 'fixed'
     inventory.style.bottom = '0px';
     inventory.style.left = '0px'
@@ -54,6 +51,7 @@ function newInventory(){
     inventory.style.backgroundColor = 'brown'
     inventory.style.zindex = 5
     document.body.append(inventory)
+    return inventory
 }
 
 
@@ -84,4 +82,3 @@ newImage('assets/well.png', 500, 425)
 newItem('assets/sword.png', 500, 405)
 newItem('assets/shield.png', 165, 185)
 newItem('assets/staff.png', 600, 100)
-
