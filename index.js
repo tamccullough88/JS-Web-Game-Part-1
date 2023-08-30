@@ -32,11 +32,14 @@ function newItem(url, left, bottom){
     })
 }
 
+//background definitions 
+
 let horizon = window.innerWidth / 3.5
 let heightOfSky = window.innerHeight-horizon
 let heightOfGrass = horizon
 
-//background
+//background. see screenshot in assets for the view on my screen. How can we make it fill the screen automatically like a flex box would with js?
+
 background('assets/sky.png', 0, horizon, window.innerWidth/100, heightOfSky/100)
 background('assets/grass.png', 0, 0,window.innerWidth/100, heightOfGrass/100)
 
