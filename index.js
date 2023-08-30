@@ -25,17 +25,22 @@ function newImage(url, left, bottom){
 //item function, set listener so that we can pick up and interact with the items when double clicked
 
 function newItem(url, left, bottom){
-    let object = newImage(url, left, bottom)
-
-    object.addEventListener('dblclick', () => {
-        object.remove()
+    let item = newImage(url, left, bottom)
+    item.addEventListener('click', function(){
+        item.remove()
+        let inventoryItem = document.createElement('img')
+        inventoryItem.src = url
+        inventory.append(inventoryItem)
     })
 }
 
-// inventory bar
 
-function newInventory(){
+
+
+// inventory bar
     let inventory = document.createElement('div')
+function newInventory(){
+
     inventory.style.position = 'fixed'
     inventory.style.bottom = '0px';
     inventory.style.left = '0px'
