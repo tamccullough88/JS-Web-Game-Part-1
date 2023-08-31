@@ -1,3 +1,5 @@
+//background. see screenshot in assets for the view on my screen. How can we make it fill the screen automatically like a flex box would with js?
+
 //background images. my inner window size is 1012w x 875h
 
 function background(url, left, bottom, width, height){
@@ -7,7 +9,15 @@ function background(url, left, bottom, width, height){
         }
     }
 }
+//background definitions 
 
+let horizon = window.innerWidth / 3.5
+let heightOfSky = window.innerHeight-horizon
+let heightOfGrass = horizon
+
+
+background('assets/sky.png', 0, horizon, window.innerWidth/100, heightOfSky/100)
+background('assets/grass.png', 0, 0,window.innerWidth/100, heightOfGrass/100)
 
 
 // images and "objects"
@@ -22,6 +32,16 @@ function newImage(url, left, bottom){
     return object
 }
 
+// images 
+
+let character = newImage('assets/green-character.gif', 100, 250)
+newImage('assets/tree.png', 200, 300)
+newImage('assets/pillar.png', 350, 100)
+newImage('assets/pine-tree.png', 450, 200)
+newImage('assets/crate.png', 150, 200)
+newImage('assets/well.png', 500, 425)
+
+
 //item function, set listener so that we can pick up and interact with the items when double clicked
 
 function newItem(url, left, bottom){
@@ -34,8 +54,15 @@ function newItem(url, left, bottom){
     })
 }
 
+
+//interactable items
+
+newItem('assets/sword.png', 500, 405)
+newItem('assets/shield.png', 165, 185)
+newItem('assets/staff.png', 600, 100)
+
 // inventory bar
-let inventory 
+   let inventory 
 function newInventory(){
     inventory = document.createElement('div')
     inventory.style.position = 'fixed'
@@ -56,29 +83,22 @@ function newInventory(){
 
 
 
-//background definitions 
 
-let horizon = window.innerWidth / 3.5
-let heightOfSky = window.innerHeight-horizon
-let heightOfGrass = horizon
 
-//background. see screenshot in assets for the view on my screen. How can we make it fill the screen automatically like a flex box would with js?
 
-background('assets/sky.png', 0, horizon, window.innerWidth/100, heightOfSky/100)
-background('assets/grass.png', 0, 0,window.innerWidth/100, heightOfGrass/100)
 newInventory()
 
-// images 
 
-newImage('assets/green-character.gif', 100, 100)
-newImage('assets/tree.png', 200, 300)
-newImage('assets/pillar.png', 350, 100)
-newImage('assets/pine-tree.png', 450, 200)
-newImage('assets/crate.png', 150, 200)
-newImage('assets/well.png', 500, 425)
 
-//interactable items
+function move(image){
+    image.style.position = "fixed"
 
-newItem('assets/sword.png', 500, 405)
-newItem('assets/shield.png', 165, 185)
-newItem('assets/staff.png', 600, 100)
+    function moveToCoordinates(left, bottom){
+        image.style.left = left + 'px'
+        image.style.bottom = bottom + 'px'
+    }
+    return {
+        to: moveToCoordinates
+    }
+}
+move (character).to(200, 500)
